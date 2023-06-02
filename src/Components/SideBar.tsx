@@ -110,10 +110,7 @@ export default function SideBar() {
     console.log(error)
   }
   setUser({
-    displayName:"",
-    email:"",
-    photoURL:"",
-    uid:""
+    
   })
   setInput("")
   }
