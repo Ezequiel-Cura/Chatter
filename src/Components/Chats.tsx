@@ -18,7 +18,7 @@ interface Iuser{
 
 
 export default function Chats() {
-    const [chats,setChats] = useState<Array<Iuser>>()
+    const [chats,setChats] = useState<Array<Iuser>>([])
     const {user,changeChat,chatId} = useChatStore(state=>state)
     
 
