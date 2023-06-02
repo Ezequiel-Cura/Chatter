@@ -31,7 +31,7 @@ export interface CreatedAt {
 
 export default function SideBar() {
   const [input,setInput] = useState<string>("")
-  const [user,setUser] = useState<Iuser>()
+  const [user,setUser]:any = useState<any>()
   const [users1,setUsers1] = useState<Root>([])
 
   const {setUsers,users} = useChatStore(state=>state)
@@ -54,10 +54,11 @@ export default function SideBar() {
       const q = query(collection(db,"Users"),where("displayName","==",input))
       const querySnapshot = await getDocs(q)
       querySnapshot.forEach((doc)=>{
+        console.log(doc.data())
         setUser(doc.data())
       })      
     } catch (error) {
-      
+      console.log(error)
     }
     setInput("")
   }
@@ -117,7 +118,7 @@ export default function SideBar() {
   setInput("")
   }
    
-  
+  user && console.log(user)
   return (
     <div className='w-[350px] h-[90%] my-[5%]  bg-[#3e3c61] flex flex-col rounded-s-xl rounded-tl-xl ' >
       <div className='h-[60px] flex flex-row justify-between bg-[#2f2d52] text-white rounded-tl-xl'>
@@ -128,15 +129,16 @@ export default function SideBar() {
       <form className='my-2' onSubmit={handleSearch}>
         <input type="text" className=' w-full bg-[#3e3c61] px-2' placeholder='Find a user' onChange={(e)=>handleChange(e)} value={input}/>
       </form>
-      { false &&
+      { user ?
         <div className='my-1 '>
           {
             <div onClick={handleClick} style={{cursor:"pointer"}} className='flex flex-row'>
-              <img src={user.photoURL} alt="" style={{width:"50px",height:"50px"}} className='rounded-full m-2'/>              
-              <span className='px-2 text-white' style={{fontSize:"20px"}}>{user.displayName} </span>                      
+              <img src={user[1].photoURL} alt="" style={{width:"50px",height:"50px"}} className='rounded-full m-2'/>              
+              <span className='px-2 text-white' style={{fontSize:"20px"}}>{user[1].displayName} </span>                      
             </div>
           }
         </div>
+        :null
       }
       {/* {
         users1 && users1.filter(u=> u.displayName.includes(input)).map((u)=>(
