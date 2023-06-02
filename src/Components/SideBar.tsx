@@ -133,8 +133,8 @@ export default function SideBar() {
         <div className='my-1 '>
           {
             <div onClick={handleClick} style={{cursor:"pointer"}} className='flex flex-row'>
-              <img src={user[1].photoURL} alt="" style={{width:"50px",height:"50px"}} className='rounded-full m-2'/>              
-              <span className='px-2 text-white' style={{fontSize:"20px"}}>{user[1].displayName} </span>                      
+              <img src={user.photoURL} alt="" style={{width:"50px",height:"50px"}} className='rounded-full m-2'/>              
+              <span className='px-2 text-white' style={{fontSize:"20px"}}>{user.displayName} </span>                      
             </div>
           }
         </div>
