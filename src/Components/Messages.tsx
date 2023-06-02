@@ -37,7 +37,7 @@ export default function Messages() {
 
 
   return (
-    <div  className='w-full relative max-h-full' style={{overflowY:'scroll',height: `calc(100% - 90px)`}}>
+    <div  className='w-full relative max-h-full bg-[#ddddf7]' style={{overflowY:'scroll',height: `calc(100% - 90px)`}}>
         {   messages ?
             messages.map((m,i)=>(
                 <div key={i}  style={{display:"flex",flexDirection:"column-reverse",alignItems:`${m.senderId === auth.currentUser.uid && "flex-end" }`}}>

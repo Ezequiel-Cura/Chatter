@@ -1,6 +1,8 @@
 import React, { useEffect, useRef } from 'react'
 import { GoogleAuthProvider,signInWithPopup ,signOut} from "firebase/auth";
 import { doc, setDoc,collection ,serverTimestamp,getDoc,query,where, getDocs, updateDoc} from 'firebase/firestore';
+import {FcGoogle} from "react-icons/fc"
+
 
 import { auth, db } from '../firebase';
 import {useAuthState} from "react-firebase-hooks/auth"
@@ -24,7 +26,7 @@ export default function Login() {
     }
     
   },[user])
-
+  
 
   function handleAlreadyLogin (){
     return navigate("/Home") 
@@ -65,8 +67,9 @@ export default function Login() {
     <div>
         <div>
           
-          <div className='flex flex-col'>
-            <button onClick={handleLogIn}>Login with Google</button>           
+          <div onClick={handleLogIn} className='w-[200px] h-[50px] flex flex-row justify-center mx-auto mt-[100px]  border border-[#3e3c61] bg-[#3e3c61] text-white' >
+            <FcGoogle size={30} className='align-middle mt-[7px]'/>
+            <button className='p-2 align-middle'>Login with Google</button>       
             
           </div>
         </div>

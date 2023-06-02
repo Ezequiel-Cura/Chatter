@@ -39,7 +39,8 @@ export default function Chat() {
         if(res.exists()){
           await updateDoc(doc(db,"userChats",user.uid),{
             [chatId + ".lastMessage"]:{
-              text
+              text,
+              read:false
             },
             [chatId+".date"]:serverTimestamp()
           })
@@ -47,7 +48,8 @@ export default function Chat() {
         }else{
           await setDoc(doc(db,"userChats",`${user.uid + currentUser.uid}`),{
             [chatId + ".lastMessage"]:{
-              text
+              text,
+              read:false
             },
             [chatId+".date"]:serverTimestamp()
           })
@@ -65,15 +67,15 @@ export default function Chat() {
   }
 
   return (
-    <div className='w-[75%] h-[90%] my-[40px] bg-blue-200 relative rounded-tr-lg rounded-br-lg max-h-[1200px]'>
-      <div className='px-3 border-b-4 bg-indigo-500 h-14'>
+    <div className='w-[75%] h-[90%] my-[5%] bg-blue-200 relative rounded-tr-xl rounded-br-xl max-h-[1200px]'>
+      <div className='px-3 border-b-4 bg-[#5d5b8d] text-white h-14 rounded-tr-lg'>
         <span style={{fontSize:"30px"}}>{user.displayName}</span>
       </div>
-      <div className='h-[100%] '>
+      <div className='h-[100%]  '>
         <Messages/>
       </div>
            
-      <form className='absolute bottom-0 h-9 w-full flex flex-row flex-nowrap justify-center bg-white' onSubmit={handleSend}>
+      <form className='absolute bottom-0 h-9 w-full flex flex-row flex-nowrap justify-center bg-white  rounded-br-xl' onSubmit={handleSend}>
         <input type="text" className='w-full h-full ' name='messages' onChange={e=>handleChange(e)} value={text}/>
         <button type='submit' className='bg-indigo-500 px-3'>Send</button>
       </form>
