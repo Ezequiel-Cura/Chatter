@@ -49,7 +49,7 @@ export default function Chats() {
     return (
         <div className='h-fit'>
             {
-                chats.length ? Object.entries(chats).sort((a:any,b:any)=>b[1].date - a[1].date).map((c)=>(
+                chats ? Object.entries(chats).sort((a:any,b:any)=>b[1].date - a[1].date).map((c)=>(
                     <div key={c[0]} onClick={()=>handleSelect(c[1].userInfo)} className='flex flex-row my-1 '>
                         <img src={c[1].userInfo.photoURL} alt="" style={{width:"50px",height:"50px"}} className='rounded-full m-2'/>
                         <div className='flex flex-col px-2' >
