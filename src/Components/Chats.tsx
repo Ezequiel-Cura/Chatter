@@ -26,12 +26,17 @@ export default function Chats() {
     useEffect(()=>{
         
         const getChats = ()=>{
-            const unsub = onSnapshot(doc(db,"userChats",`${auth.currentUser?.uid}`),(doc)=>{
-                setChats(doc.data() as Array<Iuser>)
-            })
-            
-            return ()=>{
-                unsub()
+            try {
+                const unsub = onSnapshot(doc(db,"userChats",`${auth.currentUser?.uid}`),(doc)=>{
+                    setChats(doc.data() as Array<Iuser>)
+                })
+                
+                return ()=>{
+                    unsub()
+                }
+                
+            } catch (error) {
+                console.log(error)
             }
         }
         auth.currentUser?.uid && getChats()

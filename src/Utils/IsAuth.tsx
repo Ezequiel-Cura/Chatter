@@ -18,7 +18,7 @@ const IsAuth = ()=> {
        />
     }
     if(user){
-        return <Navigate to={"/Home"} replace/>
+        return <Outlet/>
     }else{
         return <Navigate to={"/"} replace/>
     }

@@ -54,8 +54,7 @@ export default function SideBar() {
       const q = query(collection(db,"Users"),where("displayName","==",input))
       const querySnapshot = await getDocs(q)
       querySnapshot.forEach((doc)=>{
-        console.log(doc.data())
-        setUser(doc.data())
+                setUser(doc.data())
       })      
     } catch (error) {
       console.log(error)
