@@ -40,7 +40,7 @@ export default function Messages() {
     <div  className='w-full relative max-h-full bg-[#ddddf7]' style={{overflowY:'scroll',height: `calc(100% - 90px)`}}>
         {   messages ?
             messages.map((m,i)=>(
-                <div key={i}  style={{display:"flex",flexDirection:"column-reverse",alignItems:`${m.senderId === auth.currentUser.uid && "flex-end" }`}}>
+                <div key={i}  style={{display:"flex",flexDirection:"column-reverse",alignItems:`${m.senderId === auth.currentUser.uid ? "flex-end" : "flex-start" }`}}>
                     {m?.senderId === auth.currentUser.uid ? (
                         <div className='flex flex-row-reverse '>
                             <div className='h-[50px]'>
@@ -51,7 +51,7 @@ export default function Messages() {
                     ):(
                         <div className='flex flex-row'>
                             <div>
-                                <img src={user.photoURL} alt="Profile photo" width={"40px"} height={"40px"} className='rounded-full m-2' />
+                                <img src={user.photoURL} alt="Profile photo" width={"40px"} height={"40px"} className='rounded-full m-2' style={{maxHeight:"50px",maxWidth:"50px"}}/>
                             </div>
                             <span className='my-3 px-3 max-w-[80%] bg-[#8da4f1] rounded-md'>{m.text}</span>
                         </div>
